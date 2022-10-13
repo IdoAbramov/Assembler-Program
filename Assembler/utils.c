@@ -4,9 +4,9 @@
 int IC, DC, ICF, DCF, lineCounter;
 
 /* declaring global constant arrays with values. contains the valid opcodes, registers and directives*/
-const char * opcodes[] = {"mov", "cmp", "add", "sub", "lea", "clr", "not", "inc", "dec", "jmp", "bne", "jsr", "red", "prn", "rts", "stop"};
-const char * registers[] = {"r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7"};
-const char * directives[] = {".data", ".string", ".extern", ".entry"};
+const char* opcodes[] = {"mov", "cmp", "add", "sub", "lea", "clr", "not", "inc", "dec", "jmp", "bne", "jsr", "red", "prn", "rts", "stop"};
+const char* registers[] = {"r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7"};
+const char* directives[] = {".data", ".string", ".extern", ".entry"};
 
 /* declaring global constant array of all opcodes allowed modes structure which defines the 
 opcode, funct, available source and destination addressing mode for each operation code, by flags: 1 - available(ON), 0 - not available(OFF)*/
@@ -31,11 +31,11 @@ const opcodeAllowedModes opcodeAddressModes[] = {
 
 
 /* declaring global linked lists initialization. used for the code, data, errors, labels and external tables */
-codeWordNode * codeWordPtrHead = NULL;
-dataWordNode * dataWordPtrHead = NULL;
-errorNode * errorPtrHead = NULL;
-labelNode * labelPtrHead = NULL;
-externalNode * extrenalPtrHead = NULL;
+codeWordNode* codeWordPtrHead = NULL;
+dataWordNode* dataWordPtrHead = NULL;
+errorNode* errorPtrHead = NULL;
+labelNode* labelPtrHead = NULL;
+externalNode* extrenalPtrHead = NULL;
 
 
 /***** Utils Functions *****/
