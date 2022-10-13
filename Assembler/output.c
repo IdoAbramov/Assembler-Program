@@ -3,10 +3,10 @@
 
 void createObjectOutputFile(char * startOfFile)
 {
-	char *obFile;
-	FILE * f1;
-	codeWordNode * currentCodeWordPtr;
-	dataWordNode * currentDataWordPtr;
+	char* obFile;
+	FILE* f1;
+	codeWordNode* currentCodeWordPtr;
+	dataWordNode* currentDataWordPtr;
 
 	obFile = getFileName(startOfFile, OB);/*gets the file name with ".ob" ending*/
 
@@ -36,8 +36,11 @@ void createObjectOutputFile(char * startOfFile)
 			currentDataWordPtr = dataWordPtrHead;
 			while(currentDataWordPtr != NULL)/*prints into the file each data word address, value and ARE value*/
 			{	
-				fprintf(f1,"%.4d %.3X %c\n",currentDataWordPtr->dataAddress,
-								currentDataWordPtr->value.number.value,currentDataWordPtr->areValue); 
+				fprintf(f1,
+					"%.4d %.3X %c\n",
+					currentDataWordPtr->dataAddress,
+					currentDataWordPtr->value.number.value,currentDataWordPtr->areValue); 
+				
 				currentDataWordPtr = currentDataWordPtr->next;
 			}
 		}
@@ -48,11 +51,11 @@ void createObjectOutputFile(char * startOfFile)
 }
 
 
-void createEntryOutputFile(char * startOfFile)
+void createEntryOutputFile(char* startOfFile)
 {
-	char *entFile;
-	FILE * f1;
-	labelNode * currentLabelPtr;
+	char* entFile;
+	FILE* f1;
+	labelNode* currentLabelPtr;
 	boolean existEntry = FALSE;/*flag used to check if there is any entry type label in the Label Table*/
 
 	currentLabelPtr = labelPtrHead;
@@ -81,7 +84,10 @@ void createEntryOutputFile(char * startOfFile)
 			{	
 				if(currentLabelPtr->type == CODE_ENTRY || currentLabelPtr->type == DATA_ENTRY)
 				{
-					fprintf(f1,"%s %.4d\n", currentLabelPtr->name, currentLabelPtr->address);
+					fprintf(f1,
+						"%s %.4d\n", 
+						currentLabelPtr->name, 
+						currentLabelPtr->address);
 				}
 				currentLabelPtr = currentLabelPtr->next;
 			}
@@ -94,11 +100,11 @@ void createEntryOutputFile(char * startOfFile)
 }
 
 
-void createExternalOutputFile(char * startOfFile)
+void createExternalOutputFile(char* startOfFile)
 {
-	char * extFile;
-	FILE * f1;
-	externalNode * currentExternalPtr;
+	char* extFile;
+	FILE* f1;
+	externalNode* currentExternalPtr;
 
 	extFile = getFileName(startOfFile, EXT);/*gets the file name with ".ext" ending*/
 	if(extrenalPtrHead != NULL)/*checks if the External Labels Table is not empty */
@@ -113,7 +119,11 @@ void createExternalOutputFile(char * startOfFile)
 			currentExternalPtr = extrenalPtrHead;
 			while(currentExternalPtr != NULL)/*for each external label from the External Labels Table, prints it into the ".ext" file with its name and 								address where its used*/
 			{
-				fprintf(f1,"%s %.4d\n",currentExternalPtr->name,currentExternalPtr->address); 
+				fprintf(f1,
+					"%s %.4d\n",
+					currentExternalPtr->name,
+					currentExternalPtr->address); 
+				
 				currentExternalPtr = currentExternalPtr->next; 
 			}	
 	
