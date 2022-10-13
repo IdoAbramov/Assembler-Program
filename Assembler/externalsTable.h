@@ -4,9 +4,9 @@
 /*structure of external node contains its name and address.
 also has pointer for the next external node in the External Labels Table*/
 typedef struct externalNode{
-	char *name;
+	char* name;
 	int address;
-	struct externalNode * next;
+	struct externalNode* next;
 }externalNode;
 
 #endif
