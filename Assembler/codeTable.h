@@ -47,7 +47,7 @@ typedef struct codeWordNode{
 	codeOpcode opcode;
 	}value;
 	char areValue;
-	struct codeWordNode * next;
+	struct codeWordNode* next;
 }codeWordNode;
 
 
@@ -75,7 +75,7 @@ typedef struct destOperandAllowedAddresMode
 its allowed modes of source and destination operands */
 typedef struct opcodeAllowedSrcAndDestAddressModes
 {
-	char * opcodeName;
+	char* opcodeName;
 	unsigned int opcode : OPCODE_BITS_SIZE;
 	unsigned int funct: FUNCT_BITS_SIZE;
 	srcAllowedMode srcMode;
