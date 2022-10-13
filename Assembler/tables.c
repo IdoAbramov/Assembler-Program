@@ -7,7 +7,7 @@
 void addOpcodeWordIntoCodeTable(int opcode, int funct, int destAddressMode, int srcAddressMode)
 {
 	codeWordNode *temp, *currentCodeWordPtr;
-	temp = (codeWordNode *)malloc(sizeof(codeWordNode));/*creates new code word*/
+	temp = (codeWordNode*)malloc(sizeof(codeWordNode));/*creates new code word*/
 	
 	if(temp == NULL)/*if the memory allocation for the new code word fails*/
 	{
@@ -42,11 +42,11 @@ void addOpcodeWordIntoCodeTable(int opcode, int funct, int destAddressMode, int 
 }
 
 
-void addRegisterWordIntoCodeTable(char * reg)
+void addRegisterWordIntoCodeTable(char* reg)
 {
 	int i = 0;
 	codeWordNode *temp, *currentCodeWordPtr;
-	temp = (codeWordNode *)malloc(sizeof(codeWordNode)); /*creates new code word*/
+	temp = (codeWordNode*)malloc(sizeof(codeWordNode)); /*creates new code word*/
 
 	if(temp == NULL)/*if the memory allocation for the new code word fails*/
 	{
@@ -84,13 +84,13 @@ void addRegisterWordIntoCodeTable(char * reg)
 }
 
 
-void addNumberWordIntoCodeTable(char * num)
+void addNumberWordIntoCodeTable(char* num)
 {
 	int number;
 	codeWordNode *temp, *currentCodeWordPtr;
 
 	number = atoi(num+1); /*converts the num string into integer number (points to the second char, first char is '#')*/
-	temp = (codeWordNode *)malloc(sizeof(codeWordNode)); /*creates new code word*/
+	temp = (codeWordNode*)malloc(sizeof(codeWordNode)); /*creates new code word*/
 	
 	if(temp == NULL)/*if the memory allocation for the new code word fails*/
 	{
@@ -121,10 +121,10 @@ void addNumberWordIntoCodeTable(char * num)
 }
 
 
-void addDirectAddressWordIntoCodeTable(char * label)
+void addDirectAddressWordIntoCodeTable(char* label)
 {
 	codeWordNode *temp, *currentCodeWordPtr;
-	labelNode * currentLabelPtr = labelPtrHead;
+	labelNode* currentLabelPtr = labelPtrHead;
 	temp = (codeWordNode *)malloc(sizeof(codeWordNode));/*creates new code word*/
 
 	if(temp == NULL)/*if the memory allocation for the new code word fails*/
@@ -170,11 +170,11 @@ void addDirectAddressWordIntoCodeTable(char * label)
 }
 
 
-void addRelativeAddressWordIntoCodeTable(char * label)/*adding an address word of relative label (label's address - IC)*/
+void addRelativeAddressWordIntoCodeTable(char* label)/*adding an address word of relative label (label's address - IC)*/
 {
 	codeWordNode *temp, *currentCodeWordPtr;
-	labelNode * currentLabelPtr = labelPtrHead;
-	temp = (codeWordNode *)malloc(sizeof(codeWordNode));/*creates new code word*/
+	labelNode* currentLabelPtr = labelPtrHead;
+	temp = (codeWordNode*)malloc(sizeof(codeWordNode));/*creates new code word*/
 
 	if(temp == NULL)/*if the memory allocation for the new code word fails*/
 	{
@@ -221,8 +221,8 @@ void addRelativeAddressWordIntoCodeTable(char * label)/*adding an address word o
 
 void deleteCodeTable()
 {
-	codeWordNode * currentCodeWordPtr = codeWordPtrHead;
-	codeWordNode * nextCodeWordPtr;
+	codeWordNode* currentCodeWordPtr = codeWordPtrHead;
+	codeWordNode* nextCodeWordPtr;
 	
 	while(currentCodeWordPtr != NULL) /*frees the allocated memory line by line from Code Table*/
 	{
@@ -237,7 +237,7 @@ void deleteCodeTable()
 
 /***** Data Table Functions *****/
 
-void addNewStringToDataTable(char * str,char * fileName)
+void addNewStringToDataTable(char* str,char* fileName)
 {
 	int i=0,j=0,k=0;
 
@@ -299,10 +299,10 @@ void addNewStringToDataTable(char * str,char * fileName)
 }
 
 
-void addCharIntoDataTable(char ch, char * fileName)
+void addCharIntoDataTable(char ch, char* fileName)
 {
 	dataWordNode *temp, *currentDataWordPtr;
-	temp = (dataWordNode *)malloc(sizeof(dataWordNode));/*creates new data word*/
+	temp = (dataWordNode*)malloc(sizeof(dataWordNode));/*creates new data word*/
 
 	if(temp == NULL)/*if allocation of memory for new data word fails*/
 	{
@@ -331,11 +331,11 @@ void addCharIntoDataTable(char ch, char * fileName)
 	}
 }
 
-void addNewNumbersToDataTable(char * str,char * fileName)
+void addNewNumbersToDataTable(char* str,char* fileName)
 {
-	char *arguments = (char *)malloc(LINE_MAX_LENGTH);/*allocating memory for new string which will contain the numbers seperated by commas*/
+	char* arguments = (char*)malloc(LINE_MAX_LENGTH);/*allocating memory for new string which will contain the numbers seperated by commas*/
 	int i = 0, j=0, number;
-   	char *token;
+   	char* token;
 
 	if(arguments == NULL) /*if the allocation of arguments fails*/
 	{
@@ -378,10 +378,10 @@ void addNewNumbersToDataTable(char * str,char * fileName)
 }
 
 
-void addNumberIntoDataTable(int num, char * fileName)
+void addNumberIntoDataTable(int num, char* fileName)
 {
 	dataWordNode *temp, *currentDataWordPtr;
-	temp = (dataWordNode *)malloc(sizeof(dataWordNode));/*creates new data word*/
+	temp = (dataWordNode*)malloc(sizeof(dataWordNode));/*creates new data word*/
 
 	if(temp == NULL)/*if allocation of memory for new data word fails*/
 	{
@@ -413,8 +413,8 @@ void addNumberIntoDataTable(int num, char * fileName)
 
 void updateDataTableAddresses()
 {
-	dataWordNode *currentDataWordPtr = dataWordPtrHead;/*sets the pointer on the head of the Data Table */
-	labelNode * currentLabelPtr = labelPtrHead;/*sets the pointer on the head of the Labels Table*/
+	dataWordNode* currentDataWordPtr = dataWordPtrHead;/*sets the pointer on the head of the Data Table */
+	labelNode* currentLabelPtr = labelPtrHead;/*sets the pointer on the head of the Labels Table*/
 
 	while(currentDataWordPtr != NULL) /*for each data word in the Data Table, update its address by adding the ICF - insturcion counter final*/
 	{
@@ -435,8 +435,8 @@ void updateDataTableAddresses()
 
 void deleteDataTable()
 {
-	dataWordNode * currentDataWordPtr = dataWordPtrHead;
-	dataWordNode * nextDataWordPtr;
+	dataWordNode* currentDataWordPtr = dataWordPtrHead;
+	dataWordNode* nextDataWordPtr;
 
 	while(currentDataWordPtr != NULL)/*frees the allocated memory line by line from Data Table*/
 	{
@@ -452,10 +452,10 @@ void deleteDataTable()
 
 /***** Labels Table Functions *****/
 
-void addNewLabelToTable(char * label, labelType type)
+void addNewLabelToTable(char* label, labelType type)
 {
 	labelNode *temp, *currentLabelPtr;
-	temp = (labelNode *)malloc(sizeof(labelNode));/*creates a new label line for the labels table*/
+	temp = (labelNode*)malloc(sizeof(labelNode));/*creates a new label line for the labels table*/
 	
 	if(temp == NULL)/*if the creation of a new line is not successful*/
 	{
@@ -503,9 +503,9 @@ void addNewLabelToTable(char * label, labelType type)
 
 
 
-void updateEntryAttributeToLabel(const char * entLabel, char * fileName)
+void updateEntryAttributeToLabel(const char* entLabel, char* fileName)
 {
-	labelNode *currentLabelPtr = labelPtrHead;
+	labelNode* currentLabelPtr = labelPtrHead;
 
 	if(!(isLabelAlreadyInTable(entLabel))) /*label which is defined entry must be in the labels table*/
 	{
@@ -542,7 +542,7 @@ void updateEntryAttributeToLabel(const char * entLabel, char * fileName)
 
 int checkForEntry()
 {
-	labelNode * currentLabelPtr;
+	labelNode* currentLabelPtr;
 
 	if(labelPtrHead == NULL) /*if labels table has no labels at all*/
 	{
@@ -567,8 +567,8 @@ int checkForEntry()
 
 void deleteLabelTable()
 {
-	labelNode * currentLabelPtr = labelPtrHead;
-	labelNode * nextLabelPtr;
+	labelNode* currentLabelPtr = labelPtrHead;
+	labelNode* nextLabelPtr;
 
 	while(currentLabelPtr != NULL) /*frees the allocated memory line by line from labels table*/
 	{
@@ -585,11 +585,11 @@ void deleteLabelTable()
 
 /***** Externals Table Functions *****/
 
-void addExtLabelIntoExtTable(char * extLabel)
+void addExtLabelIntoExtTable(char* extLabel)
 {
 	externalNode *temp, *currentExternalPtr;
-	char * extLabelTemp = (char *)malloc(LABEL_MAX_LENGTH);
-	temp = (externalNode *)malloc(sizeof(externalNode));/*creates a new external label line for the externals table*/
+	char* extLabelTemp = (char*)malloc(LABEL_MAX_LENGTH);
+	temp = (externalNode*)malloc(sizeof(externalNode));/*creates a new external label line for the externals table*/
 
 	if(temp == NULL || extLabelTemp == NULL)/*if the creation of new line or new string for label - not successful */
 	{
@@ -622,8 +622,8 @@ void addExtLabelIntoExtTable(char * extLabel)
 
 void deleteExternTable()
 {
-	externalNode * currentExternPtr = extrenalPtrHead;
-	externalNode * nextExternPtr;
+	externalNode* currentExternPtr = extrenalPtrHead;
+	externalNode* nextExternPtr;
 
 	while(currentExternPtr != NULL) /*frees the allocated memory line by line from external labels table*/
 	{
@@ -640,10 +640,10 @@ void deleteExternTable()
 
 /***** Errors Table Functions *****/
 
-void addErrorToTable(char * errorMsg, char * fileName)
+void addErrorToTable(char* errorMsg, char* fileName)
 {
 	errorNode *temp, *currentErrorPtr;
-	temp = (errorNode *)malloc(sizeof(labelNode)); /*creates a new error line for the errors table*/
+	temp = (errorNode*)malloc(sizeof(labelNode)); /*creates a new error line for the errors table*/
 
 	if(temp == NULL) /*if the creation of a new line is not successful*/
 	{
@@ -676,7 +676,7 @@ void addErrorToTable(char * errorMsg, char * fileName)
 
 void printAllErrors()
 {
-	errorNode * currentErrorPtr = errorPtrHead; /*gets the head of the table*/
+	errorNode* currentErrorPtr = errorPtrHead; /*gets the head of the table*/
 	
 	while(currentErrorPtr != NULL) /*prints all the errors in the errors table including file and line of error and description*/
 	{	
@@ -686,7 +686,7 @@ void printAllErrors()
 }
 
 
-int withErrors(char * fileName)
+int withErrors(char* fileName)
 {
 	if(errorPtrHead == NULL) /*if the errors table is empty*/
 	{
@@ -702,8 +702,8 @@ int withErrors(char * fileName)
 
 void deleteErrorTable()
 {
-	errorNode * currentErrorPtr = errorPtrHead;
-	errorNode * nextErrorPtr;
+	errorNode* currentErrorPtr = errorPtrHead;
+	errorNode* nextErrorPtr;
 
 	while(currentErrorPtr != NULL) /*frees the allocated memory line by line from errors table*/
 	{
