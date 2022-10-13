@@ -1,7 +1,7 @@
 #include "utils.h"
 
 /* declaring global variables */
-int IC, DC, ICF, DCF,lineCounter;
+int IC, DC, ICF, DCF, lineCounter;
 
 /* declaring global constant arrays with values. contains the valid opcodes, registers and directives*/
 const char * opcodes[] = {"mov", "cmp", "add", "sub", "lea", "clr", "not", "inc", "dec", "jmp", "bne", "jsr", "red", "prn", "rts", "stop"};
@@ -46,7 +46,7 @@ void memoryAllocationFailure()
 	exit(0);/*terminates the program after memory allocation has failed*/
 }
 
-void getNextWordInLine(char * line, char * word)
+void getNextWordInLine(char* line, char* word)
 {
 	int i=0, j=0;
 
@@ -74,9 +74,9 @@ void getNextWordInLine(char * line, char * word)
 	line[j] = '\0';/*puts a null-terminator at the end of line string*/
 }
 
-char * getFileName(char * startOfFile, int fileType)
+char* getFileName(char* startOfFile, int fileType)
 {
-	char * fullFileName = (char *)malloc(MAX_FILE_NAME_LEGNTH);/*allocates full file name string with maximum capacity of max line name*/
+	char* fullFileName = (char*)malloc(MAX_FILE_NAME_LEGNTH);/*allocates full file name string with maximum capacity of max line name*/
 	
 	if(fullFileName == NULL)/*if allocation of full file name string has failed*/
 	{
