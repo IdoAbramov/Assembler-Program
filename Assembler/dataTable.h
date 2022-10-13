@@ -25,7 +25,7 @@ typedef struct dataWordNode{
 		dataAsciiWord ascii;
 	}value;
 	char areValue;
-	struct dataWordNode * next;
+	struct dataWordNode* next;
 }dataWordNode;
 
 #endif
