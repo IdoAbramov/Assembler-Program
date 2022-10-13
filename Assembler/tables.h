@@ -17,26 +17,26 @@ void addOpcodeWordIntoCodeTable(int opcode, int funct, int destAddressMode, int 
 *The function gets a register name and coding it as register word into Code Table
 *@param reg - the register's name
 */
-void addRegisterWordIntoCodeTable(char * reg);
+void addRegisterWordIntoCodeTable(char* reg);
 
 /**
 *The function gets a number's string and coding it as number word into Code Table
 *@param num - the number's string
 */
-void addNumberWordIntoCodeTable(char * num);
+void addNumberWordIntoCodeTable(char* num);
 
 /**
 *The function gets a label's name and coding its address as code word into Code Table
 *@param label - the label's name
 */
-void addDirectAddressWordIntoCodeTable(char * label);
+void addDirectAddressWordIntoCodeTable(char* label);
 
 /**
 *The function gets a relative label's name, coding its address as the distance from the current instruction address to the label's address
 *the distance coded as code word into Code Table
 *@param label - the label's name
 */
-void addRelativeAddressWordIntoCodeTable(char * label);
+void addRelativeAddressWordIntoCodeTable(char* label);
 
 /**
 *The function performs delete of code words in the Code Table
@@ -53,14 +53,14 @@ void deleteCodeTable();
 *@param str - the string to insert
 *@param fileName - the current file's name
 */
-void addNewStringToDataTable(char * str, char * fileName);
+void addNewStringToDataTable(char* str, char* fileName);
 
 /**
 *The function gets a char and coding it by its ascii value as data word and inserts it to Data Table
 *@param ch - the char to add into Data Table
 *@param fileName - the current file's name
 */
-void addCharIntoDataTable(char ch, char * fileName);
+void addCharIntoDataTable(char ch, char* fileName);
 
 /**
 *The function gets an array of numbers and file's name. It checks if the array is valid (numbers and splitted by commas)
@@ -68,14 +68,14 @@ void addCharIntoDataTable(char ch, char * fileName);
 *@param str - the array of numbers to insert
 *@param fileName - the current file's name
 */
-void addNewNumbersToDataTable(char * str, char * fileName);
+void addNewNumbersToDataTable(char* str, char* fileName);
 
 /**
 *The function gets a number and codint it by its numerical value as data word and inserts it to Data Table
 *@param num - the number to add into Data Table
 *@param fileName - the current file's name
 */
-void addNumberIntoDataTable(int num, char * fileName);
+void addNumberIntoDataTable(int num, char* fileName);
 
 /**
 *The function updates the Data Table lines' addresses to match with the Code Table lines' addresses by the IC value
@@ -96,14 +96,14 @@ void deleteDataTable();
 *@param label - the label's name
 *@param type - the label's type
 */
-void addNewLabelToTable(char * label, labelType type);
+void addNewLabelToTable(char* label, labelType type);
 
 /**
 *The function gets label and file's name. It updates the entry type adding an entry type to it
 *@param entLabel - the label to update its type to entry type
 *@param fileName - the current file's name
 */
-void updateEntryAttributeToLabel(const char * entLabel, char * fileName);
+void updateEntryAttributeToLabel(const char* entLabel, char* fileName);
 
 /**
 *The function checks if the Labels Table contains at least one entry type label
@@ -124,7 +124,7 @@ void deleteLabelTable();
 *The function adds an external label with its address (by the current address of instuction counter) into the External Labels Table
 *@param extLabel - the external label's name
 */
-void addExtLabelIntoExtTable(char * extLabel);
+void addExtLabelIntoExtTable(char* extLabel);
 
 /**
 *The function performs delete of all externals in the External Labels Table
@@ -140,14 +140,14 @@ void deleteExternTable();
 *@param errorMsg - the description of the error message
 *@param fileName - the current file's name
 */
-void addErrorToTable(char * errorMsg, char * fileName);
+void addErrorToTable(char* errorMsg, char* fileName);
 
 /**
 *The function checks if the current file name has errors. If does, prints all the errors and return TRUE. Otherwise doesn't print at all and return FALSE
 *@param fileName - the current file's name
 *@return TRUE/FALSE
 */
-int withErrors(char * fileName);
+int withErrors(char* fileName);
 
 /**
 *The function prints all errors from the Errors Table
