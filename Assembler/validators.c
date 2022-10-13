@@ -2,7 +2,7 @@
 #include "validators.h"
 
 
-int isEmptyOrCommentLine(const char * line)
+int isEmptyOrCommentLine(const char* line)
 {
 	int i=0;
 
@@ -25,7 +25,7 @@ int isEmptyOrCommentLine(const char * line)
 }
 
 
-int isOpcode(const char * str)
+int isOpcode(const char* str)
 {
 	int i;
 	for(i=0; i<NUM_OF_OPCODES; i++)
@@ -40,7 +40,7 @@ int isOpcode(const char * str)
 }
 
 
-int isRegister(const char * str)
+int isRegister(const char* str)
 {
 	int i;
 	for(i=0; i<NUM_OF_REGISTERS; i++)
@@ -55,7 +55,7 @@ int isRegister(const char * str)
 }
 
 
-int isDirective(const char * str)
+int isDirective(const char* str)
 {
 	int i;
 	for(i=0; i<NUM_OF_DIRECTIVES; i++)
@@ -70,13 +70,13 @@ int isDirective(const char * str)
 }
 
 
-int isSavedWord(const char * str) 
+int isSavedWord(const char* str) 
 {
 	return (isOpcode(str) || isRegister(str) || isDirective(str));/*checks if the string is a saved word - opcode, register or directive*/
 }
 
 
-int isLegalNumber(const char * strNum)
+int isLegalNumber(const char* strNum)
 {
 	int i = 0, num = 0;
 	if(strNum[0] != '-' && strNum[0] != '+')/* case of number without a +/- sign */
@@ -117,19 +117,20 @@ int isLegalNumber(const char * strNum)
 	{
 		return FALSE;	
 	}
-	else
-	{
-		return TRUE; 
-	}
+	
+	return TRUE;
 }
 
 
-int isLegalLabel(const char * str)/*checks if the field is a legal label*/
+int isLegalLabel(const char* str)/*checks if the field is a legal label*/
 {
 	int i;
 	boolean isLegal = TRUE;
 	/*checks if the label has its all requirements - starts with alphabetic, isn't longer then the max length, isn't a saved word and has ':' at the end*/
-	if(!(isalpha(str[0])) || (strlen(str) > LABEL_MAX_LENGTH) || isSavedWord(str) || str[strlen(str)-1] != ':' ) 
+	if(!(isalpha(str[0])) ||
+	   (strlen(str) > LABEL_MAX_LENGTH) ||
+	   isSavedWord(str) ||
+	   str[strlen(str)-1] != ':' ) 
 	{
 		isLegal = FALSE;
 	}
@@ -147,9 +148,9 @@ int isLegalLabel(const char * str)/*checks if the field is a legal label*/
 
 
 
-int isLabelAlreadyInTable(const char * str)
+int isLabelAlreadyInTable(const char* str)
 {
-	labelNode * currentLabelPtr = labelPtrHead;
+	labelNode* currentLabelPtr = labelPtrHead;
 
 	while(currentLabelPtr != NULL)
 	{
@@ -163,9 +164,9 @@ int isLabelAlreadyInTable(const char * str)
 }
 
 
-int isOperandNumber(char * strNum)/*if starts with # and the rest is legal number*/
+int isOperandNumber(char* strNum)/*if starts with # and the rest is legal number*/
 {
-	char * temp;
+	char* temp;
 
 	if(strNum[0] == '#')
 	{	
@@ -176,13 +177,13 @@ int isOperandNumber(char * strNum)/*if starts with # and the rest is legal numbe
 		}
 	}
 	
-return FALSE;
+	return FALSE;
 }
 
 
-int isRelativeAddress(char * label)/*if starts with % and the rest is an exist label*/
+int isRelativeAddress(char* label)/*if starts with % and the rest is an exist label*/
 {
-	char * temp;
+	char* temp;
 
 	if(label[0] == '%')
 	{
@@ -193,6 +194,6 @@ int isRelativeAddress(char * label)/*if starts with % and the rest is an exist l
 		}
 	}
 	
-return FALSE;
+	return FALSE;
 }
 
