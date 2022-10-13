@@ -5,11 +5,11 @@
 #include "process.h"
 
 
-void startAssemblerProcess(int numberOfFiles, char * arrayOfFiles[])
+void startAssemblerProcess(int numberOfFiles, char* arrayOfFiles[])
 {
 	int i;
-	char *asFile;
-	FILE *f1;
+	char* asFile;
+	FILE* f1;
 	
 	if(numberOfFiles == NO_FILES) /*checks if there is no files in the input*/
 	{
@@ -88,11 +88,11 @@ void startAssemblerProcess(int numberOfFiles, char * arrayOfFiles[])
 }
 
 
-void firstRound(FILE * f1, char * fileName)
+void firstRound(FILE* f1, char* fileName)
 {
 	boolean labelFlag;
 	char *line, *word, *label, *lineBuffer;
-	lineBuffer = (char *)malloc(LINE_MAX_LENGTH);/*allocating memory for line string buffer with size of maximum line length*/
+	lineBuffer = (char*)malloc(LINE_MAX_LENGTH);/*allocating memory for line string buffer with size of maximum line length*/
 
 	if(lineBuffer == NULL)/*if the allocation of memory failed*/
 	{
@@ -197,7 +197,7 @@ void firstRound(FILE * f1, char * fileName)
 
 		/*realloacting the line buffer for the next line in the file*/
 		free(lineBuffer);
-		lineBuffer = (char *)malloc(LINE_MAX_LENGTH);
+		lineBuffer = (char*)malloc(LINE_MAX_LENGTH);
 
 		if(lineBuffer == NULL)/*if memory allocation failed*/
 		{
@@ -212,10 +212,10 @@ void firstRound(FILE * f1, char * fileName)
 }
 
 
-void secondRound(FILE * f1, char * fileName)
+void secondRound(FILE* f1, char* fileName)
 {
 	char *line, *word, *lineBuffer, *src, *dest;
-	lineBuffer = (char *)malloc(LINE_MAX_LENGTH);/*allocating memory for line string buffer with size of maximum line length*/
+	lineBuffer = (char*)malloc(LINE_MAX_LENGTH);/*allocating memory for line string buffer with size of maximum line length*/
 
 	if(lineBuffer == NULL)/*if the allocation of memory failed*/
 	{
@@ -226,9 +226,9 @@ void secondRound(FILE * f1, char * fileName)
 	{
 		line = lineBuffer;/*sets the line to point on the line buffer string*/
 		/*allocatin memory for strings with maximum line length: word, src and dest*/
-		word = (char *) malloc(LINE_MAX_LENGTH);
-		src = (char *) malloc(LINE_MAX_LENGTH);
-		dest = (char *) malloc(LINE_MAX_LENGTH);
+		word = (char*) malloc(LINE_MAX_LENGTH);
+		src = (char*) malloc(LINE_MAX_LENGTH);
+		dest = (char*) malloc(LINE_MAX_LENGTH);
 
 		if(word == NULL || src == NULL || dest == NULL)/*if the allocation of memory failed*/
 		{
@@ -323,7 +323,7 @@ void secondRound(FILE * f1, char * fileName)
 
 		/*realloacting the line buffer for the next line in the file*/
 		free(lineBuffer);
-		lineBuffer = (char *)malloc(LINE_MAX_LENGTH);
+		lineBuffer = (char*)malloc(LINE_MAX_LENGTH);
 
 		if(lineBuffer == NULL)/*if memory allocation failed*/
 		{
@@ -339,19 +339,24 @@ void secondRound(FILE * f1, char * fileName)
 }
 
 
-int opcodeNumOfOperands(const char * opcode)
+int opcodeNumOfOperands(const char* opcode)
 {
 	/*depands on the opcode name, returns how many operands are should be used */
-	if(strcmp(opcode,"mov") == 0 || strcmp(opcode,"cmp") == 0 || strcmp(opcode,"add") == 0 ||
-	 strcmp(opcode,"sub") == 0 ||strcmp(opcode,"lea") == 0)
-	{
+	if(strcmp(opcode,"mov") == 0 ||
+	   strcmp(opcode,"cmp") == 0 ||
+	   strcmp(opcode,"add") == 0 ||
+	   strcmp(opcode,"sub") == 0 ||
+	   strcmp(opcode,"lea") == 0) {
+		
 		return TWO_OPERANDS;		
 	}
 	
-	else if(strcmp(opcode,"clr") == 0 || strcmp(opcode,"not") == 0 || strcmp(opcode,"inc") == 0 || 
-	strcmp(opcode,"dec") == 0 || strcmp(opcode,"jmp") == 0 || strcmp(opcode,"bne") == 0 ||
-	strcmp(opcode,"jsr") == 0 || strcmp(opcode,"red") == 0 || strcmp(opcode,"prn") == 0)
-	{
+	else if(strcmp(opcode,"clr") == 0 || strcmp(opcode,"not") == 0 ||
+		strcmp(opcode,"inc") == 0 || strcmp(opcode,"dec") == 0 ||
+		strcmp(opcode,"jmp") == 0 || strcmp(opcode,"bne") == 0 || 
+		strcmp(opcode,"jsr") == 0 || strcmp(opcode,"red") == 0 || 
+		strcmp(opcode,"prn") == 0) {
+		
 		return ONE_OPERAND;		
 	}
 
@@ -359,7 +364,7 @@ int opcodeNumOfOperands(const char * opcode)
 }
 
 
-void twoOperandsOpcode(char * opcode, char * src, char * dest, char * fileName)
+void twoOperandsOpcode(char* opcode, char* src, char* dest, char* fileName)
 {
 	int i=0;
 	addressingMode srcAddressMode = checkSrcOperandAddressMode(opcode, src);/*gets the address mode of source operand by its opcode. if not valid, will returns 											NO_ADDRESS_MODE value*/
@@ -370,7 +375,8 @@ void twoOperandsOpcode(char * opcode, char * src, char * dest, char * fileName)
 		i++;
 	}
 
-	if((srcAddressMode != NO_ADDRESS_MODE) && (destAddressMode != NO_ADDRESS_MODE))/*if both source and destination operands has valid address modes*/
+	if((srcAddressMode != NO_ADDRESS_MODE) &&
+	   (destAddressMode != NO_ADDRESS_MODE))/*if both source and destination operands has valid address modes*/
 	{
 		/*adds the opcode to the Code Table with its opcode, funct and the correct source and destination address modes*/
 		addOpcodeWordIntoCodeTable(opcodeAddressModes[i].opcode, opcodeAddressModes[i].funct, destAddressMode, srcAddressMode);
@@ -424,7 +430,7 @@ void twoOperandsOpcode(char * opcode, char * src, char * dest, char * fileName)
 }
 
 
-void oneOperandOpcode(char * opcode, char * dest, char * fileName)
+void oneOperandOpcode(char* opcode, char* dest, char* fileName)
 {
 	int i=0;
 	addressingMode destAddressMode = checkDestOperandAddressMode(opcode, dest) ;/*gets the address mode of destinaton operand by its opcode. if not valid, will 											returns NO_ADDRESS_MODE value*/
@@ -466,7 +472,7 @@ void oneOperandOpcode(char * opcode, char * dest, char * fileName)
 }
 
 
-void noOperandsOpcode(char * opcode, char * fileName)
+void noOperandsOpcode(char* opcode, char* fileName)
 {
 	int i=0;
 
@@ -480,7 +486,7 @@ void noOperandsOpcode(char * opcode, char * fileName)
 }
 
 
-void getSrcAndDestOperands(char * line, char * src, char * dest, char * fileName)
+void getSrcAndDestOperands(char* line, char* src, char* dest, char* fileName)
 {
 	int i = 0, j = 0;
 	boolean commaFlag = FALSE;
@@ -603,7 +609,7 @@ void getSrcAndDestOperands(char * line, char * src, char * dest, char * fileName
 }	
 
 
-addressingMode checkSrcOperandAddressMode(char * opcode, char * src)
+addressingMode checkSrcOperandAddressMode(char* opcode, char* src)
 {	
 	int i=0;
 	while((strcmp(opcodeAddressModes[i].opcodeName, opcode) != 0) && (i < NUM_OF_OPCODES)) /*gets the index of the opcode by its name 
@@ -640,7 +646,7 @@ addressingMode checkSrcOperandAddressMode(char * opcode, char * src)
 }
 
 
-addressingMode checkDestOperandAddressMode(char * opcode, char * dest)
+addressingMode checkDestOperandAddressMode(char* opcode, char* dest)
 {	
 	int i=0;
 	while((strcmp(opcodeAddressModes[i].opcodeName, opcode) != 0) && (i < NUM_OF_OPCODES))/*gets the index of the opcode by its name 
