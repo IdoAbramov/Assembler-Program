@@ -41,10 +41,10 @@ also has pointer for the next code word in the Code Table*/
 typedef struct codeWordNode {
 	int address;
 	union {
-	codeNumber number;
-	codeLabel labelValue;
-	codeRegister reg;
-	codeOpcode opcode;
+		codeNumber number;
+		codeLabel labelValue;
+		codeRegister reg;
+		codeOpcode opcode;
 	} value;
 	char areValue;
 	struct codeWordNode* next;
