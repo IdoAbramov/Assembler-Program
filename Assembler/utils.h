@@ -65,17 +65,17 @@ extern int DCF;
 extern int lineCounter;
 
 /* extern global arrays to use in the program */
-extern const char * opcodes[];
-extern const char * registers[];
-extern const char * directives[];
+extern const char* opcodes[];
+extern const char* registers[];
+extern const char* directives[];
 extern const opcodeAllowedModes opcodeAddressModes[NUM_OF_OPCODES];
 
 /* extern global pointers to structures to use in the program */
-extern codeWordNode * codeWordPtrHead;
-extern dataWordNode * dataWordPtrHead;
-extern errorNode * errorPtrHead;
-extern labelNode * labelPtrHead;
-extern externalNode * extrenalPtrHead;
+extern codeWordNode* codeWordPtrHead;
+extern dataWordNode* dataWordPtrHead;
+extern errorNode* errorPtrHead;
+extern labelNode* labelPtrHead;
+extern externalNode* extrenalPtrHead;
 
 
 /* Utils Functions and Documentation */
@@ -99,6 +99,5 @@ void getNextWordInLine(char* line, char* word);
 *@return a string of the full file name 
 */
 char* getFileName(char* startOfFile, int fileType);
-
 
 #endif
