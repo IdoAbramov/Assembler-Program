@@ -13,74 +13,71 @@
 /***** Code Table Definitions *****/
 
 /*structure of number code word value contains a bit-field value in size of a code word */
-typedef struct codeNumber{
+typedef struct codeNumber {
 	unsigned int value : CODE_WORD_SIZE;
-}codeNumber;
+} codeNumber;
 
 /*structure of label code word value contains a bit-field value in size of a code word */
-typedef struct codeLabel{
+typedef struct codeLabel {
 	unsigned int value : CODE_WORD_SIZE;
-}codeLabel;
+} codeLabel;
 
 /*structure of register code word value contains a bit-field value in size of a code word */
-typedef struct codeRegister{
+typedef struct codeRegister {
 	unsigned int value : CODE_WORD_SIZE;
-}codeRegister;
+} codeRegister;
 
 /*structure of opcode code word value contains bit-fields of: 
 destination address mode, source address mode, funct number and opcode number*/
-typedef struct codeOpcode{
+typedef struct codeOpcode {
 	unsigned int destAddressMode : DEST_BITS_SIZE;
 	unsigned int srcAddressMode : SRC_BITS_SIZE;
 	unsigned int funct : FUNCT_BITS_SIZE;
 	unsigned int opcode : OPCODE_BITS_SIZE;
-}codeOpcode;
+} codeOpcode;
 
 /*structure of code word contains its address, the value(depands on the code word type) and the ARE value. 
 also has pointer for the next code word in the Code Table*/
-typedef struct codeWordNode{
+typedef struct codeWordNode {
 	int address;
-	union{
+	union {
 	codeNumber number;
 	codeLabel labelValue;
 	codeRegister reg;
 	codeOpcode opcode;
-	}value;
+	} value;
 	char areValue;
 	struct codeWordNode* next;
-}codeWordNode;
+} codeWordNode;
 
 
 /***** Table of data for code words *****/
 
 /*structure of source operand allowed addressing modes represented by flags (0 - false, 1 - true) */
-typedef struct srcOperandAllowedAddresMode
-{
+typedef struct srcOperandAllowedAddresMode {
 	unsigned int immediate : FLAG_BITS_SIZE;
 	unsigned int direct : FLAG_BITS_SIZE;
 	unsigned int relative : FLAG_BITS_SIZE;
 	unsigned int direct_register : FLAG_BITS_SIZE;
-}srcAllowedMode;
+} srcAllowedMode;
 
 /*structure of destination operand allowed addressing modes represented by flags (0 - false, 1 - true) */
-typedef struct destOperandAllowedAddresMode
-{
+typedef struct destOperandAllowedAddresMode {
 	unsigned int immediate : FLAG_BITS_SIZE;
 	unsigned int direct : FLAG_BITS_SIZE;
 	unsigned int relative : FLAG_BITS_SIZE;
 	unsigned int direct_register : FLAG_BITS_SIZE;
-}destAllowedMode;
+} destAllowedMode;
 
 /*structure of opcode contains its name, opcode value, funct value and 
 its allowed modes of source and destination operands */
-typedef struct opcodeAllowedSrcAndDestAddressModes
-{
+typedef struct opcodeAllowedSrcAndDestAddressModes {
 	char* opcodeName;
 	unsigned int opcode : OPCODE_BITS_SIZE;
 	unsigned int funct: FUNCT_BITS_SIZE;
 	srcAllowedMode srcMode;
 	destAllowedMode destMode;
 
-}opcodeAllowedModes;
+} opcodeAllowedModes;
 
 #endif 
