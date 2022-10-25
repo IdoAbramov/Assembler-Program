@@ -7,25 +7,25 @@
 /***** Data Table Definitions *****/
 
 /*structure of number data word value contains a bit-field value in size of a data word */
-typedef struct{
+typedef struct {
 	unsigned int value : DATA_WORD_SIZE;
-}dataNumberWord;
+} dataNumberWord;
 
 /*structure of char data word value contains a bit-field value in size of a data word */
-typedef struct{
+typedef struct {
 	unsigned int value : DATA_WORD_SIZE;
-}dataAsciiWord;
+} dataAsciiWord;
 
 /*structure of data word contains its address, the value(depands on the data word type) and the ARE value. 
 also has pointer for the next data word in the Data Table*/
 typedef struct dataWordNode{
 	int dataAddress;
-	union{
+	union {
 		dataNumberWord number;
 		dataAsciiWord ascii;
-	}value;
+	} value;
 	char areValue;
 	struct dataWordNode* next;
-}dataWordNode;
+} dataWordNode;
 
 #endif
