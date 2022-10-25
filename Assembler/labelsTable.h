@@ -11,11 +11,11 @@ typedef enum {NO_TYPE = 0,
 
 /*structure of label node contains its name, address and its label type.
 also has pointer for the next label node in the Labels Table*/
-typedef struct labelNode{
+typedef struct labelNode {
 	char* name;
 	int address;
 	labelType type; 
 	struct labelNode* next;
-}labelNode;
+} labelNode;
 
 #endif
