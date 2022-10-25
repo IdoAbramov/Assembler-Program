@@ -50,23 +50,20 @@ void getNextWordInLine(char* line, char* word)
 {
 	int i=0, j=0;
 
-	while(line[i] != '\0' && isspace(line[i])) /*skips the whitespaces*/
-	{
+	while(line[i] != '\0' && isspace(line[i])) { /*skips the whitespaces*/
 		i++;
 	}
 
-	while(line[i] != '\0' && !isspace(line[i])) /*copies char by char from the line to the word string, until it encounters another whitespace or end of string*/
-	{
+	while(line[i] != '\0' && !isspace(line[i])) { /*copies char by char from the line to the word string, until it encounters another whitespace or end of string*/
 		word[j] = line[i];
 		i++;
 		j++;
 	}
+	
 	word[j] = '\0';/*puts a null-terminator at the end of word string*/
-		
 	j=0;
 
-	while(line[i] != '\0')/*reducing the line string from the taken word*/
-	{
+	while(line[i] != '\0') { /*reducing the line string from the taken word*/
 		line[j] = line[i];
 		j++;
 		i++;
@@ -78,34 +75,25 @@ char* getFileName(char* startOfFile, int fileType)
 {
 	char* fullFileName = (char*)malloc(MAX_FILE_NAME_LEGNTH);/*allocates full file name string with maximum capacity of max line name*/
 	
-	if(fullFileName == NULL)/*if allocation of full file name string has failed*/
-	{
+	if(fullFileName == NULL) { /*if allocation of full file name string has failed*/
 		memoryAllocationFailure();
 	}
 	
 	strcpy(fullFileName, startOfFile);
 
 	/*checks the file type and concatenates the file name with its correct ending*/
-	if(fileType == AS)
-	{
+	if(fileType == AS) {
 		strcat(fullFileName,".as");
 	}
-	else if(fileType == OB)
-	{
+	else if(fileType == OB) {
 		strcat(fullFileName,".ob");	
 	}
-	else if(fileType == ENT)
-	{
+	else if(fileType == ENT) {
 		strcat(fullFileName,".ent");
 	}
-	else if(fileType == EXT)
-	{
+	else if(fileType == EXT) {
 		strcat(fullFileName,".ext");
 	}
 
 	return fullFileName;/*returns the full file name with it's ending*/
 }
-
-
-
-
