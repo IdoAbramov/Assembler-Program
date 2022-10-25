@@ -30,9 +30,13 @@ The first word structure will be:
 *  8 - 11 : Operation code (opcode).
 
 
-Its source & destination Addresses values set according the opcode arguements type of addressing 
+Its source & destination Addresses values set according the opcode arguements type of addressing.
 
-(immediate (=00), direct (=01), relative (=10), register direct (=11))
+(immediate (=00), direct (=01), relative (=10), register direct (=11)).
 
-Each opcode name (such as mov, cmp, add and so on) has its funct + opcode, 
+
+Each opcode name (such as mov, cmp, add and so on) has its funct + opcode.
+
+Each arg of the opcode (0 - 2 args) translated to its binary code representation (of 12 bits).
+
 
