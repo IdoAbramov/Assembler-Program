@@ -1,9 +1,9 @@
 # OpenU-Assembler
-OpenU - Assembler project
+OpenU - Assembler project.
 
 C under Linux.
 
-The program takes an assembly code file, parsing it and translates to binary code (hexadecimal form).
+The program takes an assembly code file, parsing it and translates to binary code (hexadecimal form). 2-phases assembler.
 
 
 The program output is (maximum):
